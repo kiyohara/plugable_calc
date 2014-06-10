@@ -5,7 +5,7 @@ describe PlugableCalc do
     expect(PlugableCalc::VERSION).not_to be nil
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  it 'calc String' do
+    expect(PlugableCalc.calc('abc def')).to eq 'abc def'
   end
 end

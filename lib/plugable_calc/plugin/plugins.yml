@@ -1,0 +1,7 @@
+plugins:
+  enable:
+    - multi
+    - div
+    - add
+    - sub
+  disable:
