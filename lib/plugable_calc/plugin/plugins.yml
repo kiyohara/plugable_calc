@@ -1,7 +1,10 @@
-plugins:
-  enable:
-    - multi
-    - div
-    - add
-    - sub
-  disable:
+plugin:
+  name_space: PlugableCalc::Plugin
+  entries:
+    - name: Multi
+      disable: true
+    - name: Div
+      disable: false
+    - name: Add
+      version: '1.1'
+    - name: Sub

@@ -9,14 +9,14 @@ require 'awesome_print'
 Class.new do
   def parse_settings
     [
-      ['-s', '--string [STRING]', 'Target string'],
-      ['-p', '--progress', 'Show progress']
+      ['-s', '--calc_string [STRING]', 'Calc string'],
+      ['-p', '--show_progress', 'Show progress']
     ]
   end
 
   def require_opts
     [
-      'string'
+      'calc_string'
     ]
   end
 
@@ -28,27 +28,28 @@ Class.new do
     end.getopts
 
     require_opts.each do |opts|
-      if @option[opts].nil?
-        fail "option --#{opts} required"
-      end
+      fail "option --#{opts} required" if @option[opts].nil?
     end
   end
 
   def run
     opt_parse
 
-    input = @option['string']
-    progress = @option['progress']
+    calc_string = @option['calc_string']
+    show_progress = @option['show_progress']
 
-    if progress
-      proc_progress = Proc.new do |progress|
+    if show_progress
+      proc_progress = proc do |progress|
         puts progress
       end
     end
 
-    puts "#{input} = #{PlugableCalc.calc(input, proc_progress)}"
+    calculator = PlugableCalc::Calculator.new
+
+    puts "#{calc_string} = #{calculator.calc(calc_string, proc_progress)}"
   rescue => e
     puts e.message.red
+    # puts e.backtrace.join("\n")
     exit 1
   end
 end.new.run

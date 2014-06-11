@@ -1,6 +1,8 @@
 module PlugableCalc
   module Plugin
     module Sub
+      extend Plugg::Plugin
+
       def self.matcher
         /([-]?\d+)\s+[-]\s+([-]?\d+)/
       end
@@ -9,7 +11,5 @@ module PlugableCalc
         "#{md[1].to_i - md[2].to_i}"
       end
     end
-
-    register(Sub)
   end
 end

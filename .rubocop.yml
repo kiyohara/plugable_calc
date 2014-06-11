@@ -5,10 +5,18 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 2
 Style/Documentation:
   Enabled: false
 
-# Offense count: 2
 Style/RegexpLiteral:
   MaxSlashes: 0
+
+Style/MethodLength:
+  Max: 20
+
+Style/RegexpLiteral:
+  MaxSlashes: 0
+
+# Use only ascii symbols in comments.
+AsciiComments:
+  Enabled: false
